@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Streaming</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div id="logo">
+            <h1>Filmes e Séries</h1>
+        </div>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Buscar por título ou gênero...">
+            <button id="search-button">Buscar</button>
+        </div>
+        <div id="user-profile-menu-container">
+            <img id="profile-pic" src="/profile-pics/default-user-pic.png" alt="Profile Picture">
+            <div id="profile-menu">
+                <span id="welcome-message"></span>
+                <button id="account-settings-link">Configurações da Conta</button>
+                <button id="logout-button">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="auth-section">
+            <h2 id="auth-title">Entrar</h2>
+            <form id="auth-form" enctype="multipart/form-data">
+                <input type="text" id="name-input" name="name" placeholder="Nome de Usuário" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <div id="register-fields" style="display: none;">
+                    <input type="date" name="dob" placeholder="Data de Nascimento">
+                    <label for="profilePicture">Foto de Perfil (opcional):</label>
+                    <input type="file" name="profilePicture" id="profile-pic-input">
+                </div>
+                <button type="submit" id="auth-submit-btn">Entrar</button>
+            </form>
+            <p id="auth-message"></p>
+            <button id="toggle-auth-mode">Não tem uma conta? Cadastre-se</button>
+        </div>
+
+        <div id="catalog-section" style="display: none;">
+            <div id="admin-buttons-catalog">
+                <button id="upload-movie-link">Adicionar Filme</button>
+                <button id="upload-series-link">Adicionar Série/Episódio</button>
+            </div>
+            <h2 id="movies-heading" style="display: none;">Filmes</h2>
+            <div id="movie-list"></div>
+            <h2 id="series-heading" style="display: none;">Séries</h2>
+            <div id="series-list"></div>
+            <p id="no-results-message" style="display: none;">Nenhum item encontrado.</p>
+        </div>
+
+        <div id="video-section" style="display: none;">
+            <video id="video-player" controls width="100%"></video>
+            <button id="back-to-catalog">Voltar ao Catálogo</button>
+        </div>
+
+        <div id="series-episodes-section" style="display: none;">
+            <h2 id="series-title-heading"></h2>
+            <div id="episodes-list"></div>
+            <button id="back-to-series-catalog">Voltar ao Catálogo</button>
+        </div>
+
+        <div id="upload-section" style="display: none;">
+            <h2>Adicionar Conteúdo</h2>
+            <form id="video-form" enctype="multipart/form-data">
+                <input type="text" name="title" id="title-input" placeholder="Título do Vídeo" required>
+                <input type="text" name="genre" id="genre-input" placeholder="Gênero" required>
+                <label for="age-rating-select-movie">Classificação Etária:</label>
+                <select name="ageRating" id="age-rating-select-movie" required>
+                    <option value="" disabled selected>Selecione a classificação</option>
+                    <option value="L+">L+</option>
+                    <option value="10+">10+</option>
+                    <option value="12+">12+</option>
+                    <option value="14+">14+</option>
+                    <option value="16+">16+</option>
+                    <option value="18+">18+</option>
+                </select>
+                <label for="video-input">Arquivo de Vídeo (.mp4):</label>
+                <input type="file" name="video" id="video-input" accept="video/mp4" required>
+                <label for="episode-logo-input">Logo do Filme:</label>
+                <input type="file" name="episodeLogo" id="episode-logo-input" accept="image/*" required>
+                <button type="submit">Adicionar Filme</button>
+                <p id="message"></p>
+                <button id="back-from-upload" type="button">Voltar</button>
+            </form>
+        </div>
+
+        <div id="series-upload-section" style="display: none;">
+            <h2>Adicionar Série ou Episódio</h2>
+            <button id="new-series-link">Adicionar Nova Série</button>
+            <button id="new-episode-link">Adicionar Episódio a uma Série Existente</button>
+            <div id="add-series-form-container" style="display: none;">
+                <h3>Adicionar Nova Série</h3>
+                <form id="new-series-form" enctype="multipart/form-data">
+                    <input type="text" name="seriesTitle" id="series-title-input" placeholder="Título da Série" required>
+                    <input type="text" name="genre" id="series-genre-input" placeholder="Gênero" required>
+                    <label for="age-rating-select-series">Classificação Etária:</label>
+                    <select name="ageRating" id="age-rating-select-series" required>
+                        <option value="" disabled selected>Selecione a classificação</option>
+                        <option value="L+">L+</option>
+                        <option value="10+">10+</option>
+                        <option value="12+">12+</option>
+                        <option value="14+">14+</option>
+                        <option value="16+">16+</option>
+                        <option value="18+">18+</option>
+                    </select>
+                    <label for="seriesLogo">Logo da Série:</label>
+                    <input type="file" name="seriesLogo" id="series-logo-input" accept="image/*" required>
+                    <button type="submit">Adicionar Série</button>
+                    <p id="series-message"></p>
+                </form>
+            </div>
+            <div id="add-episode-form-container" style="display: none;">
+                <h3>Adicionar Episódio</h3>
+                <form id="new-episode-form" enctype="multipart/form-data">
+                    <select name="seriesTitle" id="series-list-select" required></select>
+                    <input type="text" name="title" placeholder="Título do Episódio" required>
+                    <input type="number" name="episodeNumber" placeholder="Número do Episódio" required>
+                    <label for="video-input-episode">Arquivo de Vídeo (.mp4):</label>
+                    <input type="file" name="video" id="video-input-episode" accept="video/mp4" required>
+                    <label for="episode-logo-input-episode">Logo do Episódio:</label>
+                    <input type="file" name="episodeLogo" id="episode-logo-input-episode" accept="image/*" required>
+                    <button type="submit">Adicionar Episódio</button>
+                    <p id="episode-message"></p>
+                </form>
+            </div>
+            <button id="back-from-series-upload" type="button">Voltar</button>
+        </div>
+
+        <div id="account-settings-section" style="display: none;">
+            <h2>Configurações da Conta</h2>
+            <form id="account-settings-form" enctype="multipart/form-data">
+                <label for="new-name-input">Nome de Usuário:</label>
+                <input type="text" name="name" id="new-name-input" placeholder="Novo nome de usuário">
+                <label for="new-password-input">Nova Senha:</label>
+                <input type="password" name="password" id="new-password-input" placeholder="Deixe em branco para não alterar">
+                <label for="new-dob-input">Data de Nascimento:</label>
+                <input type="date" name="dob" id="new-dob-input">
+                <label for="new-profile-pic-input">Nova Foto de Perfil:</label>
+                <input type="file" name="newProfilePicture" id="new-profile-pic-input" accept="image/*">
+                <button type="submit">Salvar Alterações</button>
+                <button id="back-from-settings" type="button">Voltar</button>
+            </form>
+            <p id="settings-message"></p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

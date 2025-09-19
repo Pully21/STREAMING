@@ -1,0 +1,278 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fundo cinza claro */
+    color: #1a1a1a; /* Texto escuro */
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #ffffff; /* Fundo branco */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#logo h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #03a9f4; /* Azul da marca */
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#search-container {
+    display: flex;
+    gap: 10px;
+}
+
+#search-input {
+    padding: 8px 15px;
+    border: 1px solid #ddd; /* Borda cinza clara */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Fundo de input cinza muito claro */
+    color: #1a1a1a;
+}
+
+#search-button {
+    background-color: #03a9f4; /* Azul do botão */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#search-button:hover {
+    background-color: #0288d1; /* Azul mais escuro no hover */
+}
+
+#user-profile-menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #03a9f4; /* Borda azul */
+    object-fit: cover;
+}
+
+#profile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+#profile-menu.show {
+    display: block;
+}
+
+#profile-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#profile-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+#welcome-message {
+    padding: 10px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #03a9f4;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    text-align: left;
+}
+
+form input, form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+}
+
+form button {
+    background-color: #03a9f4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #0288d1;
+}
+
+#auth-section, #account-settings-section, #upload-section, #series-upload-section, #video-section, #series-episodes-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#auth-section h2 {
+    color: #03a9f4;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#toggle-auth-mode, #back-to-catalog, #back-from-upload, #back-from-series-upload, #back-from-settings {
+    background: none;
+    border: none;
+    color: #03a9f4;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+#toggle-auth-mode:hover, #back-to-catalog:hover, #back-from-upload:hover, #back-from-series-upload:hover, #back-from-settings:hover {
+    color: #0288d1;
+}
+
+#admin-buttons, #admin-buttons-catalog {
+    margin-bottom: 20px;
+}
+
+#admin-buttons button, #admin-buttons-catalog button, #new-series-link, #new-episode-link {
+    background-color: #03a9f4;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+}
+
+#admin-buttons button:hover, #admin-buttons-catalog button:hover, #new-series-link:hover, #new-episode-link:hover {
+    background-color: #0288d1;
+}
+
+#catalog-section h2 {
+    text-align: left;
+    border-bottom: 2px solid #03a9f4;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+#movie-list, #series-list, #episodes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.movie-item, .series-item, .episode-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.movie-item:hover, .series-item:hover, .episode-item:hover {
+    transform: scale(1.05);
+}
+
+.video-logo, .series-logo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.movie-item h3, .series-item h3, .episode-item h3 {
+    font-size: 1.2em;
+    margin: 0 0 5px 0;
+    color: #03a9f4;
+}
+
+.movie-item p, .series-item p, .episode-item p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.movie-item button, .series-item button, .episode-item button {
+    background-color: #03a9f4;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.movie-item button:hover, .series-item button:hover, .episode-item button:hover {
+    background-color: #0288d1;
+}
+
+.delete-button {
+    background-color: #f44336 !important;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f !important;
+}
